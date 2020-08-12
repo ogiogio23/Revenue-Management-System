@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+    </div>
+</nav>
+<section>
+    <div class="row">
+        <div class="col-sm-4 col-sm-12">
+            <img class="img-responsive side-imgs" src="~/Content/images/certification-testing.jpg" style="width:100%;" alt="" width="400" height="400" />
+        </div>
+        <div class="col-sm-4">
+            <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
+                <h3><i class="fa fa-user"></i> Sign in Admin</h3>
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <label class="fa fa-user form-control-icon" for="input-username"></label>
+                    <input type="text" class="form-control" placeholder="Username" value="" data-required="true" data-required-msg="Your username is required" name="usernameLogDetails" id="input-username" />
+                    <span class="glyphicon form-control-feedback hidden-xs" id="username-validator"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="fa fa-lock form-control-icon" for="input-password"></label>
+                    <input type="password" name="password" placeholder="Password" class="form-control" data-required="true" data-required-msg="Your password is required" id="input-password" />
+                    <span class="glyphicon form-control-feedback hidden-xs" id="password-validator"></span>
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-chain form-control-icon" for="logintype"></label>
+                    <select name="logintype" class="form-control" data-required="true" data-required-msg="Select the type" id="logintype">
+                        <option value="">Login type</option>
+                        <option value="Clerk">Clerk</option>
+                        <option value="Cashier">Cashier</option>
+                        <option value="SysAdmin">SysAdmin</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submitCredentials" class="btn btn-primary" id="ButtonLogin">
+                        <i class="fa fa-sign-in"></i> Login
+                    </button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-4 hidden-xs" style="width: 31.333333%;">
+            <img src="~/Content/images/income.jpg" alt="" class="img-responsive side-imgs" width="430" height="350" />
+        </div>
+    </div>
+</section>
+<div id="backtotop" title="Scroll to top"></div>
+
+

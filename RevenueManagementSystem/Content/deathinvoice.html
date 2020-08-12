@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <link rel="shortcut icon" href="images/favicon.ico">
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=true" />
+    <title>Revenue Collection and Management System</title>
+     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+      <link href="js/fieldModifier.min.css" rel="stylesheet" type="text/css"/>
+   <link href="js/BootSrap/css/bootstrap.min.css" type="text/css" rel="stylesheet" /> 
+    <link href="js/BootSrap/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet" />
+      <link rel="Stylesheet" href="css/mainStyle.css" />
+      <style type="text/css">
+        .top-header{padding: 10px;}
+        .header{padding: 5px 10px;border-bottom: 1px solid #ccc;}
+        .navbar {padding-left: 10px; padding-right: 10px;border-radius: 0px;}
+        .side-icons{color: #0a0;font-size: 16px;}
+        .process-links li{border-bottom: 1px solid #ccc;}
+        .center-container {
+    min-height: 498px;
+}
+      </style>
+    </head>
+    <body>
+      <div class="container-fluid" style="overflow:hidden;">
+           <header>
+                  <div class="top-header">
+      <h1>Revenue Collection <span style="color: #0a0;">and Management System</span></h1>
+  </div>
+       <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+         <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+            <li><a href="Home.html"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                        </ul> 
+      <ul class="nav navbar-nav navbar-right">
+        <li><a><span class="glyphicon glyphicon-user"></span></a></li>
+        <li><a href="Logout.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+      </ul>
+     
+    </div>
+  </div>
+</nav>  
+                 </header>
+            <section class="container">
+                <div class="row">
+                <aside class="col-md-3">
+                <div class="quick-links">
+                        <h2>Quick Links</h2>
+                        <ul>
+                            <li><a href="taxRevenue.html"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                               <li><a href="registration.html"><i class="fa fa-user"></i> Registration</a></li>
+                               <li><a href="licenses.html"><i class="fa fa-book"></i> Licenses</a></li>
+                               <li><a href="payment.html"><i class="fa fa-bank"></i> Payment Option</a></li>
+                               <li><a href="verify.html"><i class="fa fa-edit"></i> Verify Payment</a></li>
+                               <li><a href="registerAdmin.html"><i class="fa fa-user"></i> Create Administrator</a></li>
+                               <li><a href="adminManager.html"><i class="fa fa-users"></i> Manage Account</a></li>
+                                 <li><a href="report.html"><i class="fa fa-print"></i> Report</a></li>
+                        </ul>  
+                    </div>              
+                   
+                </aside> 
+                <article class="col-md-9">
+                     <div class="table-responsive">
+     <table class="table-condensed" border="0" cellpadding="5" id="rev-invoice" style="font-size:16px;line-height:20px;">
+            <th class="text-center">PAYMENT INVOICE FOR DEATH REGISTRATION</th>
+            <tr><th>Name: </th><td></td></tr>
+            <tr><th>PHONE NUMBER: </th><td></td></tr>
+            <tr><th>OCCUPATION: </th><td></td></tr>
+            <tr><th>BANK: </th><td></td></tr>
+            <tr><th>AMOUNT: </th><td></td></tr>
+            <tr><th>REVENUE TYPE: </th><td></td></tr>
+            <tr><th>NAME OF THE DEAD: </th><td></td></tr>
+            <tr><th>DATE OF INVOICE: </th><td></td></tr>
+     </table><br>
+          
+               <div class="form-group">
+                   <button type="submit" name="invoice" class="btn btn-success" id="tax-invoice">
+         <i class="fa fa-print"></i> Print Invoice
+     </button>
+           </div>
+         </div>
+                </article>
+                    
+            </section>
+              
+             <div id="backtotop" title="Scroll to top"></div>    
+  <footer id="footer">
+<div id="social">
+  <div id="social-content">
+    <div id="social-icons">
+        <h3>Follow us on: </h3>
+      <a href="#" target="_blank" title="Facebook">
+         <i class="fa fa-facebook-square"></i>
+      </a>
+        <a href="#" target="_blank" title="Googlee Plus">
+          <i class="fa fa-google-plus-square"></i>
+      </a>
+      <a href="#" target="_blank" title="Twitter">
+        <i class="fa fa-twitter-square"></i>
+      </a>
+      <a href="#" target="_blank" title="Linked In">
+          <i class="fa fa-linkedin-square"></i>
+      </a>
+         
+         <a href="#" target="_blank" title="YouTube Channel">
+          <i class="fa fa-youtube-square"></i>
+      </a>
+    </div>
+     
+         
+  
+          
+  </div>
+   </div>  
+     
+</footer>
+</div>
+        
+        <script src="js/BootSrap/js/bootstrap.min.js" type="text/javascript"></script> 
+   <script src="js/BootSrap/bootbox.min.js" type="text/javascript"></script> 
+   <script src="js/scripts.js" type="text/javascript"></script> 
+   <script src="js/fieldModifier.min.js" type="text/javascript"></script>
+   <script>
+   $(function(){
+        $('#tax-invoice').click(function(e){
+     e.preventDefault();
+  var prtContent = document.getElementById("rev-invoice");
+  window.console.log(prtContent.outerHTML);
+var WinPrint = window.open('', 'Revenue History', 'left=0,top=0,width=800,height=600,toolbar=0,scrollbars=0,status=0');
+WinPrint.document.write(prtContent.outerHTML);
+WinPrint.document.close();
+WinPrint.focus();
+WinPrint.print();
+WinPrint.close();
+ });  
+   });
+   </script>
+    </body>
+</html>

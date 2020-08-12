@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<section class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                    <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
+                    <li data-toggle="collapse" data-target="#new" class="collapsed">
+                        <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="new">
+                        <li><a href="birth"> Birth</a></li>
+                        <li><a href="death"> Death</a></li>
+                        <li><a href="marriage"> Marriage</a></li>
+                    </ul>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
+                    <li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>
+                    <li><a href="registeradmin"><i class="fa fa-user"></i> Create Administrator</a></li>
+                    <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
+                    <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
+                </ul>
+            </div>
+        </aside>
+        <article class="col-md-9">
+            <h3 class="text-center">Report Section</h3><br>
+            <div class="table-responsive">
+                <table class="table table-bordered" id="revenue-table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone number</th>
+                        <th>Email</th>
+                        <th>Amount</th>
+                        <th>Revenue Type</th>
+                        <th>Officer in Charge</th>
+                        <th>Date</th>
+                    </tr>
+
+                </table>
+                <h4>TOTAL REGISTRATION: </h4><br>
+                <div>
+                    <a href="#" class="btn btn-primary" id="print-table">Print report</a>
+                </div>
+            </div>
+
+        </article>
+    </div>
+</section>
+<div id="backtotop" title="Scroll to top"></div>
+

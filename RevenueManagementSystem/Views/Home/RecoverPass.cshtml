@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Recover Password";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+    </div>
+</nav>
+<section style="width:50%;margin: auto;padding: 10px;background-color: #EEE;">
+    <form class="form-horizontal center-container" role="form" action="http://localhost/RevenueCollectionSystem/recoverpass.php" method="post" id="login-form" enctype="multipart/form-data">
+        <h3 class="text-center">Change your password</h3>
+        <div class="form-group"></div>
+
+        <div class="form-group">
+            <label class="fa fa-user form-control-icon" for="username"></label>
+            <input type="text" class="form-control" placeholder="Username" value="" data-required="true" data-required-msg="Your username is required" name="username" id="username" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-lock form-control-icon" for="newPass"></label>
+            <input type="password" class="form-control" placeholder="New password" value="" data-required="true" data-compare="confirmNewPass" data-required-msg="New password required" name="newPass" id="newPass" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-lock form-control-icon" for="confirmNewPass"></label>
+            <input type="password" class="form-control" placeholder="Confirm new password" value="" data-required="true" data-compare="newPass" data-required-msg="Confirm password required" name="confirmNewPass" id="confirmNewPass" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit" name="submitCredentials" class="btn btn-success" id="ButtonLogin">
+                <i class="fa fa-upload"></i> Update
+            </button>
+        </div>
+
+    </form>
+</section>
+

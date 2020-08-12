@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Register Citizen";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+    </div>
+</nav>
+<section style="width:50%;margin: auto;padding: 10px;background-color: #EEE;">
+    <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
+        <h3><i class="fa fa-user"></i> Supply Your Details</h3>
+        <div class="form-group"></div>
+        <div class="form-group">
+            <label class="fa fa-user form-control-icon" for="input-username" style="top:0px;bottom:0px;"></label>
+            <input type="text" name="fname" required placeholder="First name" class="ui-corner-all" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" id="input-username" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-user form-control-icon" for="input-username" style="top:0px;bottom:0px;"></label>
+            <input type="text" name="lname" required placeholder="Last name" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-exchange form-control-icon" for="input-email" style="top:0px;bottom:0px;"></label>
+            <input type="email" name="email" required placeholder="Email" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" id="input-email" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-user form-control-icon" for="input-username" style="top:0px;bottom:0px;"></label>
+            <input type="text" name="user" required placeholder="Username" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-phone form-control-icon" for="input-phone" style="top:0px;bottom:0px;"></label>
+            <input type="tel" pattern="\d{11}" title="Enter 11 digits phone number" name="fone" required placeholder="Phone number" style="padding:5px;width:90%;margin-left: 28px;" id="input-phone" data-required="true" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-map-marker form-control-icon" for="input-address" style="top:0px;bottom:0px;"></label>
+            <input type="text" name="address" required placeholder="Full address" style="padding:5px;width:90%;margin-left:28px;" id="input-address" data-required="true" />
+        </div>
+        <div class="form-group">
+            <label class="fa fa-lock form-control-icon" for="client-pass" style="top:0px;bottom:0px;"></label>
+            <input type="password" title="Password" name="pass" required placeholder="Password" id="client-pass" style="padding:5px;width:90%;margin-left:28px;" data-required="true" />
+        </div>
+        <div class="form-group">
+            <label style="font-size:15px;">Sex:</label><br>
+            <input type="radio" required name="gender" id="genderM" value="Male">
+            <label for="genderM">Male</label><br><br>
+            <input type="radio" required name="gender" id="genderF" value="Female">
+            <label for="genderF">Female</label>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" name="submitCredentials" class="btn btn-primary" id="ButtonLogin">
+                <i class="fa fa-sign-in"></i> Submit
+            </button>
+        </div>
+    </form>
+</section>
+<div id="backtotop" title="Scroll to top"></div>
+

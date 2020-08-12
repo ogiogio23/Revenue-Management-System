@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<section class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                    <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
+                    <li data-toggle="collapse" data-target="#new" class="collapsed">
+                        <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="new">
+                        <li><a href="birth"> Birth</a></li>
+                        <li><a href="death"> Death</a></li>
+                        <li><a href="marriage"> Marriage</a></li>
+                    </ul>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
+                    <li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>
+                    <li><a href="registerAdmin"><i class="fa fa-user"></i> Create Administrator</a></li>
+                    <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
+                    <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
+                </ul>
+            </div>
+
+        </aside>
+        <article class="col-md-9">
+            <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
+                <h3 class="text-center">Registration</h3>
+                <p>Please enter the details of the individual to register</p>
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <label class="fa fa-user form-control-icon" for="fullname"></label>
+                    <input type="text" class="form-control" placeholder="Full name with surname first" data-required-msg="Your fullname is required" name="fullname" id="fullname" />
+                </div>
+
+                <div class="form-group">
+                    <label class="fa fa-map-marker form-control-icon" for="address"></label>
+                    <input type="text" class="form-control" placeholder="Address" data-required="true" data-required-msg="Your address is required" name="address" id="address" />
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-envelope form-control-icon" for="email"></label>
+                    <input type="text" class="form-control" placeholder="E-mail address" name="email" id="email" />
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-phone form-control-icon" for="phoneNumber"></label>
+                    <input type="text" class="form-control" placeholder="Phone Number" data-required="true" data-required-phone="true" data-required-msg="Your phone number is required" name="phoneNumber" id="phoneNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-stethoscope form-control-icon" for="occupation"></label>
+                    <input type="text" class="form-control" placeholder="Occupation" data-required="true" data-required-msg="Your occupation is required" name="occupation" id="occupation" />
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-institution form-control-icon" for="lga"></label>
+                    <input type="text" class="form-control" placeholder="Local government" data-required="true" name="lga" id="lga" />
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-money form-control-icon" for="amount"></label>
+                    <input type="text" class="form-control" placeholder="Amount paid" data-required="true" data-required-digits="true" data-required-msg="Your amount is required" name="amount" id="amount" />
+                </div>
+                <div class="form-group">
+                    <label class="fa fa-user form-control-icon" for="lga"></label>
+                    <select name="type" class="form-control" data-required="true" data-required-msg="Select the type">
+                        <option value="">Type of registration</option>
+                        <option value="Birth">Birth</option>
+                        <option value="Death">Death</option>
+                        <option value="Marriage">Marriage</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="continue" class="btn btn-success" id="ButtonLogin">
+                        <i class="fa fa-upload"></i> Continue
+                    </button>
+                </div>
+
+            </form>
+        </article>
+    </div>
+</section>
+
+<div id="backtotop" title="Scroll to top"></div>
+

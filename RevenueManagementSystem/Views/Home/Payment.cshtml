@@ -1,0 +1,103 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+<section class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                    <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
+                    <li data-toggle="collapse" data-target="#new" class="collapsed">
+                        <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="new">
+                        <li><a href="birth"> Birth</a></li>
+                        <li><a href="death"> Death</a></li>
+                        <li><a href="marruage"> Marriage</a></li>
+                    </ul>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
+                    <li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>
+                    <li><a href="#"><i class="fa fa-user"></i> Create Administrator</a></li>
+                    <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
+                    <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
+                </ul>
+            </div>
+
+        </aside>
+        <article class="col-md-9" style="background-color:#EEE;padding:20px;height:500px;">
+            <h3>Payment options</h3><br>
+            <table id="acc-options" style="border-collapse: collapse;line-height: 30px;font-size:14px;">
+                <thead>
+                    <tr>
+                        <th style="width: 300px; text-align: center;">Bank</th>
+                        <th style="width: 500px;text-align: center;">Account details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>First Bank</td>
+                        <td>
+                            Account name: Ajeromi Ifelodun LGA <br />
+                            Account number: 0223465478
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a target="_blank" href="http://www.firstbanknigeria.com/FBN/" style="text-decoration:underline;">Pay with your firstbank online banking</a></td>
+                    </tr>
+                    <tr>
+                        <td>GTBank</td>
+                        <td>
+                            Account name: Ajeromi Ifelodun LGA<br />
+                            Account number: 0054346754
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a target="_blank" href="http://www.gtbank.com" style="text-decoration:underline;">Pay with your GTBank online banking</a></td>
+                    </tr>
+                    </tr>
+                    <tr>
+                        <td>Diamond</td>
+                        <td>
+                            Account name: Ajeromi Ifelodun LGA<br />
+                            Account number: 0007554354
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a target="_blank" href="http://www.diamondbank.com/mobilesite/" style="text-decoration:underline;">Pay with your Diamond Bank online banking</a></td>
+                    </tr>
+                    </tr>
+                </tbody>
+            </table><br>
+            <p> Please you can visit your bank or any other online payment services to make payments before proceeding.</p>
+        </article>
+
+    </div>
+</section>
+
