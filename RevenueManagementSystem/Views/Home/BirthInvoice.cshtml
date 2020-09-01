@@ -1,0 +1,91 @@
+﻿@model RevenueManagementSystem.Models.Birth
+
+@{
+    ViewBag.Title = "BirthInvoice";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+<h2>BirthInvoice</h2>
+
+<div>
+    <h4>Birth</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Citizen.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Citizen.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Occupation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Occupation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountPaid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountPaid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameOfBaby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameOfBaby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PlaceOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlaceOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRegistered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRegistered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

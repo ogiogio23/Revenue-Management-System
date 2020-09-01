@@ -4,10 +4,11 @@
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
 }
 
+
 <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index">Ajeromi Ifelodun LGA, Lagos State</a>
+            <a class="navbar-brand" href="">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
     </div>
 </nav>
@@ -17,18 +18,21 @@
             <img class="img-responsive side-imgs" src="~/Content/images/certification-testing.jpg" style="width:100%;" alt="" width="400" height="400" />
         </div>
         <div class="col-sm-4">
+
+
+
             <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
                 <h3><i class="fa fa-user"></i> Sign in Admin</h3>
                 <div class="form-group"></div>
                 <div class="form-group">
                     <label class="fa fa-user form-control-icon" for="input-username"></label>
-                    <input type="text" class="form-control" placeholder="Username" value="" data-required="true" data-required-msg="Your username is required" name="usernameLogDetails" id="input-username" />
+                    <input type="text" class="form-control" placeholder="Username" value="" data-required="true" data-required-msg="Your username is required" name="Username" id="input-username" />
                     <span class="glyphicon form-control-feedback hidden-xs" id="username-validator"></span>
                 </div>
 
                 <div class="form-group">
                     <label class="fa fa-lock form-control-icon" for="input-password"></label>
-                    <input type="password" name="password" placeholder="Password" class="form-control" data-required="true" data-required-msg="Your password is required" id="input-password" />
+                    <input type="password" name="Password" placeholder="Password" class="form-control" data-required="true" data-required-msg="Your password is required" id="input-password" />
                     <span class="glyphicon form-control-feedback hidden-xs" id="password-validator"></span>
                 </div>
                 <div class="form-group">
@@ -37,11 +41,11 @@
                         <option value="">Login type</option>
                         <option value="Clerk">Clerk</option>
                         <option value="Cashier">Cashier</option>
-                        <option value="SysAdmin">SysAdmin</option>
+                        <option value="SystemAdmin">System Admin</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="submitCredentials" class="btn btn-primary" id="ButtonLogin">
+                    <button type="submit" name="Login" class="btn btn-primary" id="ButtonLogin">
                         <i class="fa fa-sign-in"></i> Login
                     </button>
                 </div>

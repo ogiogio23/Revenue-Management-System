@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -44,6 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -143,12 +152,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -202,9 +205,42 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008251826009_InitialCreate.cs" />
+    <Compile Include="Migrations\202008251826009_InitialCreate.designer.cs">
+      <DependentUpon>202008251826009_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008252111570_Migration-Add-Citizens.cs" />
+    <Compile Include="Migrations\202008252111570_Migration-Add-Citizens.designer.cs">
+      <DependentUpon>202008252111570_Migration-Add-Citizens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008252304461_Migration-Add-Licenses.cs" />
+    <Compile Include="Migrations\202008252304461_Migration-Add-Licenses.designer.cs">
+      <DependentUpon>202008252304461_Migration-Add-Licenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008260600220_Migration-Add-Births.cs" />
+    <Compile Include="Migrations\202008260600220_Migration-Add-Births.designer.cs">
+      <DependentUpon>202008260600220_Migration-Add-Births.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008261434327_Migration-Add-Deaths.cs" />
+    <Compile Include="Migrations\202008261434327_Migration-Add-Deaths.designer.cs">
+      <DependentUpon>202008261434327_Migration-Add-Deaths.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008261556485_Migration-Add-Marriages.cs" />
+    <Compile Include="Migrations\202008261556485_Migration-Add-Marriages.designer.cs">
+      <DependentUpon>202008261556485_Migration-Add-Marriages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Birth.cs" />
+    <Compile Include="Models\Citizen.cs" />
+    <Compile Include="Models\Death.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\License.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Marriage.cs" />
+    <Compile Include="Models\RevenueManagementDbContext.cs" />
+    <Compile Include="Models\SqlDefaultValueAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -225,6 +261,7 @@
     <Content Include="Content\admin1\taxRevenue.html" />
     <Content Include="Content\admin1\verify.html" />
     <Content Include="Content\birthinvoice.html" />
+    <Content Include="Content\BirthList.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\clientManager.html" />
@@ -232,8 +269,11 @@
     <Content Include="Content\clientreport.html" />
     <Content Include="Content\deathinvoice.html" />
     <Content Include="Content\DefaultPage.html" />
+    <Content Include="Content\editBirth.html" />
     <Content Include="Content\error.html" />
     <Content Include="Content\Home.html" />
+    <Content Include="Content\images\paystack-badge-cards-ngn.png" />
+    <Content Include="Content\images\paystack.jpg" />
     <Content Include="Content\index.html" />
     <Content Include="Content\licenses.html" />
     <Content Include="Content\licensesinvoice.html" />
@@ -262,6 +302,7 @@
     </Content>
     <Content Include="Content\Logout.php" />
     <Content Include="Content\admin1\Logout.php" />
+    <Content Include="Content\database\RevenueManagementDb.bak" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -285,8 +326,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -314,7 +353,7 @@
     <Content Include="Views\Home\RecoverPass.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\TaxRevenue.cshtml" />
-    <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\CitizenProfile.cshtml" />
     <Content Include="Views\Home\Licenses.cshtml" />
     <Content Include="Views\Home\Payment.cshtml" />
     <Content Include="Views\Home\Verify.cshtml" />
@@ -330,20 +369,35 @@
     <Content Include="Views\Admin\RegisterAdmin.cshtml" />
     <Content Include="Views\Admin\ManageAccount.cshtml" />
     <Content Include="Views\Admin\Report.cshtml" />
-    <Content Include="Views\Home\Report.cshtml" />
     <Content Include="Views\Home\Birth.cshtml" />
     <Content Include="Views\Home\Death.cshtml" />
     <Content Include="Views\Home\Marriage.cshtml" />
     <Content Include="Views\Admin\Birth.cshtml" />
     <Content Include="Views\Admin\Death.cshtml" />
     <Content Include="Views\Admin\Marriage.cshtml" />
+    <Content Include="Views\Home\LicenseInvoice.cshtml" />
+    <Content Include="Views\Admin\RegisterCitizen.cshtml" />
+    <Content Include="Views\Admin\RegisteredBirth.cshtml" />
+    <Content Include="Views\Admin\RegisteredDeath.cshtml" />
+    <Content Include="Views\Admin\RegisteredMarriage.cshtml" />
+    <Content Include="Views\Admin\EditBirth.cshtml" />
+    <Content Include="Views\Admin\DeleteBirth.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\EditCitizen.cshtml" />
+    <Content Include="Views\Admin\DeleteCitizen.cshtml" />
+    <Content Include="Views\Admin\EditMarriage.cshtml" />
+    <Content Include="Views\Admin\DeleteMarriage.cshtml" />
+    <Content Include="Views\Admin\EditDeath.cshtml" />
+    <Content Include="Views\Admin\DeleteDeath.cshtml" />
+    <Content Include="Views\Home\BirthInvoice.cshtml" />
+    <Content Include="Views\Home\BirthReceipt.cshtml" />
+    <Content Include="Views\Home\ListOfPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\admin\" />
     <Folder Include="Content\archive\" />
     <Folder Include="Content\css\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Content\includes\" />
     <Folder Include="Content\js\" />
   </ItemGroup>
@@ -354,6 +408,26 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202008251826009_InitialCreate.resx">
+      <DependentUpon>202008251826009_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008252111570_Migration-Add-Citizens.resx">
+      <DependentUpon>202008252111570_Migration-Add-Citizens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008252304461_Migration-Add-Licenses.resx">
+      <DependentUpon>202008252304461_Migration-Add-Licenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008260600220_Migration-Add-Births.resx">
+      <DependentUpon>202008260600220_Migration-Add-Births.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008261434327_Migration-Add-Deaths.resx">
+      <DependentUpon>202008261434327_Migration-Add-Deaths.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008261556485_Migration-Add-Marriages.resx">
+      <DependentUpon>202008261556485_Migration-Add-Marriages.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -389,7 +463,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

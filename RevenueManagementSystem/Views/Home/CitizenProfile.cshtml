@@ -1,0 +1,187 @@
+﻿@using RevenueManagementSystem.Models
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+@{
+    var res = Session["user"] as Citizen;
+}
+
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+
+        @if (res != null)
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">@res.FirstName</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+            </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+
+            </div>
+        }
+    </div>
+</nav>
+<section class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Dashboard</a></li>
+                    <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
+                    <li data-toggle="collapse" data-target="#new" class="collapsed">
+                        <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="new">
+                        <li><a href="birth"> Birth</a></li>
+                        <li><a href="death"> Death</a></li>
+                        <li><a href="marriage"> Marriage</a></li>
+                    </ul>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Upload Licenses Paid</a></li>
+                    <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
+                    <!--<li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>-->
+                    <!--<li><a href="#"><i class="fa fa-user"></i> Create Administrator</a></li>-->
+                    <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
+                    <li><a href="citizenprofile"><i class="fa fa-print"></i> Profile</a></li>
+                </ul>
+            </div>
+
+        </aside>
+        <article class="col-md-9">
+            <h2>Citizen's Profile</h2>
+
+            <div class="table-responsive">
+                @if (res != null)
+                {
+
+
+
+                <table class="table-condensed" border="0" cellpadding="5" id="invoice-table" style="font-size:16px;line-height:20px;">
+                    <div class="text-right">
+                        @Html.ActionLink("Edit Profile", "EditProfile", "Home")
+                    </div>
+
+                    <hr />
+
+                    <tr><th> First Name :</th><td><i> @res.FirstName</i></td></tr>
+                    <tr><th> Last Name : </th><td><i>@res.LastName </i></td></tr>
+                    <tr><th> Aaddress : </th><td><i> @res.Address</i></td></tr>
+                    <tr><th> Email :  </th><td><i>@res.Email</i></td></tr>
+                    <tr><th>Phone Number :  </th><td><i>@res.PhoneNumber</i></td></tr>
+                    <tr><th>Username : </th><td><i>@res.Username</i></td></tr>
+                    <tr><th>LGA : </th><td><i>@res.LGA </i></td></tr>
+                    <tr><th>Gender :  </th><td><i>@res.Gender</i></td></tr>
+                </table><br>
+
+                }
+            </div>
+            @*
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PhoneNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Username)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Username)
+                    </dd>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ConfirmPassword)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ConfirmPassword)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LGA)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LGA)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.DateRegistered)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.DateRegistered)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Gender)
+                    </dd>
+
+                </dl>
+            </div>
+            *@
+        </article>
+    </div>
+</section>

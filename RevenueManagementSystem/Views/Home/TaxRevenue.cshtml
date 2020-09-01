@@ -1,24 +1,43 @@
-﻿
+﻿@model IEnumerable<RevenueManagementSystem.Models.Birth>
+@using RevenueManagementSystem.Models
 @{
-    ViewBag.Title = "Property Tax and Rating (PTR)";
+    ViewBag.Title = "TaxRevenue";
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+
+@{
+    var res = Session["user"] as Citizen;
 }
 
 <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+            <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            </ul>
 
-        </div>
+        @if (res != null)
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">@res.FirstName</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+            </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+
+            </div>
+        }
     </div>
 </nav>
 <section class="container">
@@ -27,7 +46,7 @@
             <div class="quick-links">
                 <h2>Quick Links</h2>
                 <ul>
-                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> DashBoard</a></li>
                     <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
                     <li data-toggle="collapse" data-target="#new" class="collapsed">
                         <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
@@ -37,76 +56,80 @@
                         <li><a href="death"> Death</a></li>
                         <li><a href="marriage"> Marriage</a></li>
                     </ul>
-                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Upload Licenses Paid</a></li>
                     <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
-                    <li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>
-                    <li><a href="#"><i class="fa fa-user"></i> Create Administrator</a></li>
+                    <!--<li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>-->
+                    <!--<li><a href="#"><i class="fa fa-user"></i> Create Administrator</a></li>-->
                     <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
-                    <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
+                    <li><a href="citizenprofile"><i class="fa fa-print"></i> Profile</a></li>
                 </ul>
             </div>
 
         </aside>
         <article class="col-md-9">
-            <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
-                <h3 class="text-center">Register PTR and Fees</h3>
-                <p>Please enter the details of the individual paying the tax</p>
-                <div class="form-group"></div>
-                <div class="form-group">
-                    <label class="fa fa-user form-control-icon" for="surname"></label>
-                    <input type="text" class="form-control" placeholder="Surname" data-required="true" data-required-msg="Your surname is required" name="surname" id="surname" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-user form-control-icon" for="firstname"></label>
-                    <input type="text" class="form-control" placeholder="Firstname" data-required="true" data-required-msg="Your first name is required" name="firstname" id="firstname" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-user form-control-icon" for="middlename"></label>
-                    <input type="text" class="form-control" placeholder="Middle name" data-required="true" data-required-msg="Your middle name is required" name="middlename" id="middlename" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-map-marker form-control-icon" for="address"></label>
-                    <input type="text" class="form-control" placeholder="Address" data-required="true" data-required-msg="Your address is required" name="address" id="address" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-envelope form-control-icon" for="email"></label>
-                    <input type="text" class="form-control" placeholder="E-mail address" name="email" id="email" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-phone form-control-icon" for="phoneNumber"></label>
-                    <input type="text" class="form-control" placeholder="Phone Number" data-required="true" data-required-phone="true" data-required-msg="Your phone number is required" name="phoneNumber" id="phoneNumber" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-stethoscope form-control-icon" for="occupation"></label>
-                    <input type="text" class="form-control" placeholder="Occupation" data-required="true" data-required-msg="Your occupation is required" name="occupation" id="occupation" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-money form-control-icon" for="amount"></label>
-                    <input type="text" class="form-control" placeholder="Amount paid" value="3000" readonly="readonly" data-required="true" data-required-digits="true" data-required-msg="Your amount is required" name="amount" id="amount" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-bank form-control-icon" for="bank"></label>
-                    <select name="bank" class="form-control" data-required="true" data-required-msg="Select the type" id="bank">
-                        <option value="">Bank</option>
-                        <option value="FirstBank(0223465478)">First Bank (0223465478)</option>
-                        <option value="GTBank(0054346754)">GTBank (0054346754)</option>
-                        <option value="Diamond(0007554354)">Diamond (0007554354)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="fa fa-book form-control-icon" for="revenuetype"></label>
-                    <input type="text" class="form-control" value="PTR and Fees" readonly="readonly" data-required="true" name="revtype" id="rev" />
-                </div>
-                <div class="form-group">
-                    <button type="submit" name="submitCredentials" class="btn btn-primary" id="ButtonLogin">
-                        <i class="fa fa-upload"></i> Register
-                    </button>
-                </div>
 
 
-            </form>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Occupation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AmountPaid)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Bank)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NameOfBaby)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DOB)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PlaceOfBirth)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Occupation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AmountPaid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Bank)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NameOfBaby)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DOB)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("View", "BirthReceipt", new { id = item.Id })
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
         </article>
     </div>
 </section>
-
