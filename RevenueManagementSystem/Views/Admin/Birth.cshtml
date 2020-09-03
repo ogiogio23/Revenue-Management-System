@@ -1,4 +1,4 @@
-﻿
+﻿@model RevenueManagementSystem.Models.Birth
 @{
     ViewBag.Title = "Birth Registration";
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
@@ -7,18 +7,32 @@
 <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+            <a class="navbar-brand" href="Home">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-            </ul>
+        @if (Session["UserId"] != null)
+        {
             <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li>
+                    <a href="">@Session["Username"].ToString()</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
             </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
 
-        </div>
+            </div>
+        }
+
+
     </div>
 </nav>
 
@@ -28,7 +42,7 @@
             <div class="quick-links">
                 <h2>Quick Links</h2>
                 <ul>
-                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> List of Registered Citizens</a></li>
                     <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
                     <li data-toggle="collapse" data-target="#new" class="collapsed">
                         <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
@@ -38,10 +52,11 @@
                         <li><a href="death"> Death</a></li>
                         <li><a href="marriage"> Marriage</a></li>
                     </ul>
-                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Upload Licenses Paid</a></li>
+                    <li><a href="registercitizen"><i class="fa fa-user"></i> Register Citizen</a></li>
                     <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
-                    <li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>
-                    <li><a href="#"><i class="fa fa-user"></i> Create Administrator</a></li>
+                    <!--<li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>-->
+                    <li><a href="registeradmin"><i class="fa fa-user"></i> Create Administrator</a></li>
                     <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
                     <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
                 </ul>
@@ -53,67 +68,54 @@
                 <h3 class="text-center">Birth Registration</h3>
                 <p>Please enter the details of the individual to register</p>
                 <div class="form-group"></div>
+
+
                 <div class="form-group">
-                    <label class="fa fa-user form-control-icon" for="fullname"></label>
-                    <input type="text" class="form-control" placeholder="Full name with surname first" value="" data-required-msg="Your fullname is required" name="fullname" id="fullname" />
+                    <label class="fa fa-envelope form-control-icon" for="email"></label>
+                    <input type="text" class="form-control" placeholder="E-mail address" value="" name="Email" id="email" />
                 </div>
 
                 <div class="form-group">
-                    <label class="fa fa-map-marker form-control-icon" for="address"></label>
-                    <input type="text" class="form-control" placeholder="Address" data-required="true" value="" data-required-msg="Your address is required" name="address" id="address" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-envelope form-control-icon" for="email"></label>
-                    <input type="text" class="form-control" placeholder="E-mail address" value="" name="email" id="email" />
-                </div>
-                <div class="form-group">
-                    <label class="fa fa-phone form-control-icon" for="phoneNumber"></label>
-                    <input type="text" class="form-control" placeholder="Phone Number" value="" data-required="true" data-required-phone="true" data-required-msg="Your phone number is required" name="phoneNumber" id="phoneNumber" />
-                </div>
-                <div class="form-group">
                     <label class="fa fa-stethoscope form-control-icon" for="occupation"></label>
-                    <input type="text" class="form-control" placeholder="Occupation" value="" data-required="true" data-required-msg="Your occupation is required" name="occupation" id="occupation" />
+                    <input type="text" class="form-control" placeholder="Occupation" value="" data-required="true" data-required-msg="Your occupation is required" name="Occupation" id="occupation" />
                 </div>
-                <div class="form-group">
-                    <label class="fa fa-institution form-control-icon" for="lga"></label>
-                    <input type="text" class="form-control" placeholder="Local government" value="" data-required="true" name="lga" id="lga" />
-                </div>
+
                 <div class="form-group">
                     <label class="fa fa-money form-control-icon" for="amount"></label>
-                    <input type="text" class="form-control" placeholder="Amount payed" value="" readonly="readonly" data-required="true" data-required-digits="true" data-required-msg="Your amount is required" name="amount" id="amount" />
+                    <input type="text" class="form-control" placeholder="Amount payed" value="" data-required="true" data-required-digits="true" data-required-msg="Your amount is required" name="AmountPaid" id="amount" />
                 </div>
                 <div class="form-group">
                     <label class="fa fa-bank form-control-icon" for="bank"></label>
-                    <select name="bank" class="form-control" data-required="true" data-required-msg="Select the type" id="bank">
+                    <select name="Bank" class="form-control" data-required="true" data-required-msg="Select the type" id="bank">
                         <option value="">Bank</option>
                         <option value="FirstBank(0223465478)">First Bank (0223465478)</option>
                         <option value="GTBank(0054346754)">GTBank (0054346754)</option>
                         <option value="Diamond(0007554354)">Diamond (0007554354)</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label class="fa fa-user form-control-icon" for="type"></label>
-                    <input type="text" name="type" class="form-control" value="" readonly="readonly" data-required="true" data-required-msg="Select the type" id="type">
-                </div>
+
 
                 <div class="form-group">
                     <label class="fa fa-user form-control-icon" for="baby"></label>
-                    <input type="text" class="form-control" placeholder="Name of Baby" data-required="true" data-required-msg="The name of the baby is required" name="babyname" id="baby-name" />
+                    <input type="text" class="form-control" placeholder="Name of Baby" data-required="true" data-required-msg="The name of the baby is required" name="NameOfBaby" id="baby-name" />
                 </div>
                 <div class="form-group">
                     <label class="fa fa-clock-o form-control-icon" for="birth-time"></label>
-                    <input type="text" class="form-control" placeholder="Date of Birth" data-required="true" data-required-msg="The time of birth is required" name="birthtime" id="birth-time" />
+                    <input type="text" class="form-control" placeholder="Date of Birth" data-required="true" data-required-msg="The time of birth is required" name="DOB" id="birth-time" />
                 </div>
                 <div class="form-group">
                     <label class="fa fa-map-marker form-control-icon" for="occupation"></label>
-                    <input type="text" class="form-control" placeholder="Place of Birth" data-required="true" data-required-msg="The place of birth is required" name="birthplace" id="birth-place" />
+                    <input type="text" class="form-control" placeholder="Place of Birth" data-required="true" data-required-msg="The place of birth is required" name="PlaceOfBirth" id="birth-place" />
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" name="submitCredentials" class="btn btn-success" id="ButtonLogin">
+                    <button type="submit" name="Register" class="btn btn-success" id="ButtonLogin">
                         <i class="fa fa-upload"></i> Register
                     </button>
+                    <a href="RegisteredBirth">View List of Registered Births </a>
+
                 </div>
+
 
             </form>
         </article>

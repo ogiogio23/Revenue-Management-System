@@ -10,16 +10,29 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-            </ul>
+        @if (Session["UserId"] != null)
+        {
             <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li>
+                    <a href="">@Session["Username"].ToString()</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
             </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
 
-        </div>
+            </div>
+        }
+
     </div>
 </nav>
 <section>
@@ -34,8 +47,8 @@
                                 <i class="fa fa-th box-icon"></i>
                             </div>
                             <div class="col-md-9">
-                                <h4><strong>Property Tax & Rating (PTR) and Fees</strong></h4>
-                                <p>Upload PTR and Fees collected.</p>
+                                <h4><strong>Registered Ctiizens</strong></h4>
+                                <p>List of all registered citizens</p>
                                 <p>This function is restricted from the Cashier.</p>
                             </div>
                         </a>
@@ -45,7 +58,7 @@
             <section class="col-md-4">
                 <div class="boxes box2">
                     <article class="box-content row">
-                        <a href="registration">
+                        <a href="birth">
                             <div class="col-md-3">
                                 <i class="fa fa-laptop box-icon"></i>
                             </div>
@@ -94,7 +107,7 @@
 
                 </div>
             </section>
-            <section class="col-md-4">
+            <!--<section class="col-md-4">
                 <div class="boxes box8">
                     <article class="box-content row">
 
@@ -111,7 +124,7 @@
                     </article>
 
                 </div>
-            </section>
+            </section>-->
 
             <section class="col-md-4">
                 <div class="boxes box5">

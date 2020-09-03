@@ -13,21 +13,30 @@
     </div>
 </nav>
 <section style="width:50%;margin: auto;padding: 10px;background-color: #EEE;">
-    <form class="form-horizontal center-container" role="form" action="http://localhost/RevenueCollectionSystem/recoverpass.php" method="post" id="login-form" enctype="multipart/form-data">
+
+    @if (ViewBag.Message != null)
+            {
+
+        <div class="alert alert-success">
+            <h4>Password Successfully Updated </h4>
+            @Html.ActionLink("Login here", "index", "Home")
+        </div>
+    }
+    <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form">
         <h3 class="text-center">Change your password</h3>
         <div class="form-group"></div>
 
         <div class="form-group">
             <label class="fa fa-user form-control-icon" for="username"></label>
-            <input type="text" class="form-control" placeholder="Username" value="" data-required="true" data-required-msg="Your username is required" name="username" id="username" />
+            <input type="text" class="form-control" placeholder="Username" value="" data-required="true" data-required-msg="Your username is required" name="Username" id="username" />
         </div>
         <div class="form-group">
             <label class="fa fa-lock form-control-icon" for="newPass"></label>
-            <input type="password" class="form-control" placeholder="New password" value="" data-required="true" data-compare="confirmNewPass" data-required-msg="New password required" name="newPass" id="newPass" />
+            <input type="password" class="form-control" placeholder="New password" value="" data-required="true" data-compare="confirmNewPass" data-required-msg="New password required" name="Password" id="newPass" />
         </div>
         <div class="form-group">
             <label class="fa fa-lock form-control-icon" for="confirmNewPass"></label>
-            <input type="password" class="form-control" placeholder="Confirm new password" value="" data-required="true" data-compare="newPass" data-required-msg="Confirm password required" name="confirmNewPass" id="confirmNewPass" />
+            <input type="password" class="form-control" placeholder="Confirm new password" value="" data-required="true" data-compare="newPass" data-required-msg="Confirm password required" name="ConfirmPassword" id="confirmNewPass" />
         </div>
 
         <div class="form-group">

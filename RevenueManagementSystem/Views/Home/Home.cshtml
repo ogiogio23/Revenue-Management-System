@@ -1,26 +1,40 @@
-﻿
+﻿@using RevenueManagementSystem.Models
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
 }
 
-
+@{
+    var result = Session["user"] as Citizen;
+}
 
 <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+            <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-            </ul>
+        @if (result.CitizenId != 0)
+        {
             <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li>
+                    <a href="">@result.FirstName</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
             </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
 
-        </div>
+            </div>
+        }
     </div>
 </nav>
 
@@ -30,15 +44,15 @@
                 <section class="col-md-4">
                     <div class=" boxes box1">
                         <article class="box-content row">
-                            <a href="taxRevenue">
+                            <a href="taxrevenue">
 
                                 <div class="col-md-3">
                                     <i class="fa fa-th box-icon"></i>
                                 </div>
                                 <div class="col-md-9">
-                                    <h4><strong>Property Tax & Rating (PTR) and Fees</strong></h4>
-                                    <p>Register PTR and Fees.</p>
-                                    <p>AMOUNT: #3000</p>
+                                    <h4><strong>Dashboard</strong></h4>
+                                    <p>List of all paid licenses, fees and levies</p>
+                                    <p></p>
                                 </div>
                             </a>
                         </article>
@@ -47,7 +61,7 @@
                 <section class="col-md-4">
                     <div class="boxes box2">
                         <article class="box-content row">
-                            <a href="registration">
+                            <a href="birth">
                                 <div class="col-md-3">
                                     <i class="fa fa-laptop box-icon"></i>
                                 </div>
@@ -96,7 +110,7 @@
 
                     </div>
                 </section>
-                <section class="col-md-4">
+                <!--<section class="col-md-4">
                     <div class="boxes box8">
                         <article class="box-content row">
 
@@ -113,7 +127,7 @@
                         </article>
 
                     </div>
-                </section>
+                </section>-->
 
                 <section class="col-md-4">
 
@@ -137,14 +151,14 @@
                     <div class="boxes box4">
                         <article class="box-content row">
 
-                            <a href="report">
+                            <a href="citizenprofile">
                                 <div class="col-md-3">
                                     <i class="fa fa-print box-icon"></i>
                                 </div>
                                 <div class="col-md-9">
-                                    <h4><strong>My Report</strong></h4>
-                                    <p>Print Property Tax and Rating and Fees generated.</p>
-                                    <p>This function can only be performed by the Clerk and SysAdmin.</p>
+                                    <h4><strong>My Profile</strong></h4>
+                                    <p>View and Edit Personal profile p>
+                                    <p></p>
                                 </div>
                             </a>
 

@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_RevenueLayout.cshtml";
+}
+
+<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
+        </div>
+        @if (Session["UserId"] != null)
+        {
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">@Session["Username"].ToString()</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+            </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
+
+            </div>
+        }
+    </div>
+</nav>
+<section class="container">
+    <div class="row">
+        <aside class="col-md-3">
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> List of Registered Citizens</a></li>
+                    <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
+                    <li data-toggle="collapse" data-target="#new" class="collapsed">
+                        <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
+                    </li>
+                    <ul class="sub-menu collapse" id="new">
+                        <li><a href="birth"> Birth</a></li>
+                        <li><a href="death"> Death</a></li>
+                        <li><a href="marriage"> Marriage</a></li>
+                    </ul>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="registercitizen"><i class="fa fa-user"></i> Register Citizen</a></li>
+                    <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
+                    <!--<li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>-->
+                    <li><a href="registercitizen"><i class="fa fa-user"></i> Create Administrator</a></li>
+                    <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
+                    <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
+
+                </ul>
+            </div>
+
+        </aside>
+        @if (ViewBag.Feedback != null)
+        {
+            <div class="alert alert-success"> @ViewBag.Feedback</div>
+        }
+
+        <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
+            <h3><i class="fa fa-user"></i> Supply Your Details</h3>
+            <div class="form-group"></div>
+            <div class="form-group">
+                <label class="fa fa-user form-control-icon" for="input-username" style="top:0px;bottom:0px;"></label>
+                <input type="text" name="FirstName" required placeholder="First name" class="ui-corner-all" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" id="input-username" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-user form-control-icon" for="input-username" style="top:0px;bottom:0px;"></label>
+                <input type="text" name="LastName" required placeholder="Last name" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-map-marker form-control-icon" for="input-address" style="top:0px;bottom:0px;"></label>
+                <input type="text" name="Address" required placeholder="Full address" style="padding:5px;width:90%;margin-left:28px;" id="input-address" data-required="true" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-exchange form-control-icon" for="input-email" style="top:0px;bottom:0px;"></label>
+                <input type="email" name="Email" required placeholder="Email" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" id="input-email" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-phone form-control-icon" for="input-phone" style="top:0px;bottom:0px;"></label>
+                <input type="tel" pattern="\d{11}" title="Enter 11 digits phone number" name="PhoneNumber" required placeholder="Phone number" style="padding:5px;width:90%;margin-left: 28px;" id="input-phone" data-required="true" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-user form-control-icon" for="input-username" style="top:0px;bottom:0px;"></label>
+                <input type="text" name="Username" required placeholder="Username" style="padding:5px;width:90%;margin-left: 28px;" data-required="true" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-lock form-control-icon" for="client-pass" style="top:0px;bottom:0px;"></label>
+                <input type="password" title="Password" name="Password" required placeholder="Password" id="client-pass" style="padding:5px;width:90%;margin-left:28px;" data-required="true" />
+            </div>
+            <div class="form-group">
+                <label class="fa fa-lock form-control-icon" for="client-pass" style="top:0px;bottom:0px;"></label>
+                <input type="Password" title="ConfirmPassword" name="ConfirmPassword" required placeholder="ConfirmPassword" id="client-pass" style="padding:5px;width:90%;margin-left:28px;" data-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="fa fa-map-marker form-control-icon" for="client-pass" style="top:0px;bottom:0px;"></label>
+                <input type="text" title="LGA" name="LGA" required placeholder="LGA" id="client-pass" style="padding:5px;width:90%;margin-left:28px;" data-required="true" />
+            </div>
+
+            <div class="form-group">
+                <label class="fa fa-user form-control-icon" for="logintype"></label>
+                <select name="Gender" class="form-control" data-required="true" data-required-msg="Select the type" id="Gender" style="width:745px;">
+                    <option value="">Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" name="Register" class="btn btn-primary" id="ButtonLogin">
+                    <i class="fa fa-sign-in"></i> Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+

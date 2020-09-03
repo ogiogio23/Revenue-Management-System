@@ -10,16 +10,28 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="home">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-            </ul>
+        @if (Session["UserId"] != null)
+        {
             <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                <li>
+                    <a href="">@Session["Username"].ToString()</a>
+                </li>
+                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
             </ul>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
+                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                </ul>
 
-        </div>
+            </div>
+        }
     </div>
 </nav>
 <section class="container">
@@ -28,7 +40,7 @@
             <div class="quick-links">
                 <h2>Quick Links</h2>
                 <ul>
-                    <li><a href="taxrevenue"><i class="fa fa-th"></i> Property Tax & Rating (PTR) and Fees</a></li>
+                    <li><a href="taxrevenue"><i class="fa fa-th"></i> List of Registered Citizens</a></li>
                     <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
                     <li data-toggle="collapse" data-target="#new" class="collapsed">
                         <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
@@ -38,9 +50,10 @@
                         <li><a href="death"> Death</a></li>
                         <li><a href="marriage"> Marriage</a></li>
                     </ul>
-                    <li><a href="licenses"><i class="fa fa-book"></i> Licenses</a></li>
+                    <li><a href="licenses"><i class="fa fa-book"></i> Upload Licenses Paid</a></li>
+                    <li><a href="registercitizen"><i class="fa fa-user"></i> Register Citizen</a></li>
                     <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
-                    <li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>
+                    <!--<li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>-->
                     <li><a href="registeradmin"><i class="fa fa-user"></i> Create Administrator</a></li>
                     <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
                     <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
@@ -49,7 +62,101 @@
 
         </aside>
         <article class="col-md-9">
+            @if (ViewBag.Feedback != null)
+            {
+                <div class="alert alert-success"> @ViewBag.Feedback</div>
+            }
+
+
             <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
+                <h3 class="text-center">Create New Admin</h3>
+                <input name="__RequestVerificationToken" type="hidden" value="Im3GcxHLqzIJtML-yWV8QxttO-U3_ZHijL1YsZr6edV8afRzxSlu5IiY0cL_y5EM5glHo4ciSMvtHBnOd4QjIPocuOOFaN_uSkdzfT080VI1" />    <div class="form-horizontal">
+
+                    <hr />
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="FirstName">FirstName</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="First Name is required!" id="FirstName" name="FirstName" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="FirstName" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="LastName">LastName</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="LastName" name="LastName" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="LastName" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="OfficeArea">OfficeArea</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="OfficeArea" name="OfficeArea" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="OfficeArea" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Email">Email</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-email="Invalid Email" data-val-required="Email is required!" id="Email" name="Email" type="email" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Username">Username</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line" data-val="true" data-val-required="Last Name is required!" id="Username" name="Username" type="text" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Password">Password</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-required="Password is required!" id="Password" name="Password" type="password" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="ConfirmPassword">ConfirmPassword</label>
+                        <div class="col-md-10">
+                            <input class="form-control text-box single-line password" data-val="true" data-val-equalto="Please confirm your password" data-val-equalto-other="*.Password" id="ConfirmPassword" name="ConfirmPassword" type="password" value="" />
+                            <span class="field-validation-valid text-danger" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="Role">Role</label>
+                        <div class="col-md-10">
+                            <select class="form-control" data-val="true" data-val-required="The Role field is required." id="Role" name="Role">
+                                <option selected="selected" value="Role">Role</option>
+                                <option value="Cashier">Cashier</option>
+                                <option value="Clerk">Clerk</option>
+                                <option value="SystemAdmin">System Admin</option>
+                            </select>
+                            <span class="field-validation-valid text-danger" data-valmsg-for="Role" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+            <!--form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
                 <h3 class="text-center">Register a new administrator</h3>
                 <p>Please enter the details of the individual to register</p>
                 <div class="form-group"></div>
@@ -90,7 +197,9 @@
                     </button>
                 </div>
 
-            </form>
+            </!--form>-->
+
+
         </article>
     </div>
 </section>
