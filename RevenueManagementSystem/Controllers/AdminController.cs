@@ -185,10 +185,7 @@ namespace RevenueManagementSystem.Controllers
 
 
 
-        public ActionResult ManageAccount()
-        {
-            return View();
-        }
+
 
         public ActionResult ManageAccount(Citizen citizen)
         {
@@ -200,7 +197,7 @@ namespace RevenueManagementSystem.Controllers
 
             using (RevenueManagementDbContext db = new RevenueManagementDbContext())
             {
-                var user = db.Citizens.Single(c => c.Email == citizen.Email);
+                var user = db.Citizens.SingleOrDefault(c => c.Email == citizen.Email);
                 if (user == null)
                 {
                     return View();

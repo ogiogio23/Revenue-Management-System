@@ -1,23 +1,29 @@
-﻿
+﻿@using RevenueManagementSystem.Models
 @{
     ViewBag.Title = "Manage Account";
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
 }
 
+@{
+    var User = Session["user"] as Citizen;
+}
 
 <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="Home">Ajeromi Ifelodun LGA, Lagos State</a>
+            <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-
+        @if (User != null)
+        {
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href=""></a>
+                    <a href="">@User.FirstName</a>
                 </li>
-                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
+                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
             </ul>
-
+        }
+        else
+        {
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
@@ -28,7 +34,7 @@
                 </ul>
 
             </div>
-
+        }
     </div>
 </nav>
 <section class="container">
