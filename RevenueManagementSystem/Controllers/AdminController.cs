@@ -22,7 +22,7 @@ namespace RevenueManagementSystem.Controllers
             {
                 using (RevenueManagementDbContext db = new RevenueManagementDbContext())
                 {
-                    var usr = db.Admins.Single(a => a.Username == user.Username && a.Password == user.Password);
+                    var usr = db.Admins.SingleOrDefault (a => a.Username == user.Username && a.Password == user.Password);
                     if (usr != null)
                     {
                         Session["UserId"] = usr.Id.ToString();
@@ -32,7 +32,8 @@ namespace RevenueManagementSystem.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Invalid Username or Passwor!");
+                        ViewBag.Message = "Invalid Username or Passwor!";
+                        //ModelState.AddModelError("", "Invalid Username or Passwor!");
                     }
                 }
             }
@@ -216,8 +217,35 @@ namespace RevenueManagementSystem.Controllers
 
         public ActionResult Report()
         {
-            ViewBag.Title = "Report.";
-            return View();
+            List<Report> report = new List<Report>();
+            using (RevenueManagementDbContext db = new RevenueManagementDbContext())
+            {
+                var rep = db.Licenses.ToList();
+                if (rep == null)
+                {
+                    return RedirectToAction("License");
+                }
+                ViewBag.Message = rep.Count();
+                rep.Reverse();
+                for (int i=0;i<rep.Count; i++)
+                {
+                    Report repInfo = new Models.Report();
+                    var rp = rep[i];
+                    var citizenInfo = db.Citizens.SingleOrDefault(r => r.Email == rp.Email);
+                    if (citizenInfo != null)
+                    {
+                        repInfo.FirstName = citizenInfo.FirstName;
+                        repInfo.LastName = citizenInfo.LastName;
+                        repInfo.Address = citizenInfo.Address;
+                        repInfo.AmountPaid = rep[i].AmountPaid;
+                        repInfo.Email = rep[i].Email;
+                        repInfo.LicenseType = rep[i].LicenseType;
+                        repInfo.DateRegistered = rep[i].DateRegistered;
+                        report.Add(repInfo);
+                    }
+                }
+                return View(report);
+            }
         }
 
         //GET

@@ -4,20 +4,18 @@
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
 }
 
-@{
-    var User = Session["user"] as Citizen;
-}
+
 
 <nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
         </div>
-        @if (User != null)
+        @if (Session["UserId"] != null)
         {
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="">@User.FirstName</a>
+                    <a href="">@Session["Username"].ToString()</a>
                 </li>
                 <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
             </ul>

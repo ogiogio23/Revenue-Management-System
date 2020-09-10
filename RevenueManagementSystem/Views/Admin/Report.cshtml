@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<RevenueManagementSystem.Models.Report>
+
 @{
     ViewBag.Title = "Report";
     Layout = "~/Views/Shared/_RevenueLayout.cshtml";
@@ -63,22 +64,38 @@
         <article class="col-md-9">
             <h3 class="text-center">Report Section</h3><br>
             <div class="table-responsive">
-                <table class="table table-bordered" id="revenue-table">
+                <table class="table table-bordered" id="report-table">
                     <tr>
-                        <th>Name</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
                         <th>Address</th>
-                        <th>Phone number</th>
                         <th>Email</th>
                         <th>Amount</th>
                         <th>Revenue Type</th>
-                        <th>Officer in Charge</th>
                         <th>Date</th>
                     </tr>
 
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><i></i>@item.FirstName</td>
+                            <td><i></i>@item.LastName</td>
+                            <td><i></i>@item.Address</td>
+                            <td><i></i>@item.Email</td>
+                            <td><i></i>@item.AmountPaid</td>
+                            <td><i></i>@item.LicenseType</td>
+                            <td><i></i>@item.DateRegistered</td>
+
+                        </tr>
+                    }
                 </table>
-                <h4>TOTAL REGISTRATION: </h4><br>
+                @if (ViewBag.Message != null) {
+                <h4>TOTAL REGISTRATION:@ViewBag.Message </h4><br>
+                }
                 <div>
-                    <a href="#" class="btn btn-primary" id="print-table">Print report</a>
+                    <button type="submit" name="invoice" class="btn btn-success" id="btn-report">
+                        <i class="fa fa-print"></i> Print Report
+                    </button>
                 </div>
             </div>
 

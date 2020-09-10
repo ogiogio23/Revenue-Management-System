@@ -9,36 +9,7 @@
 }
 
 
-<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
-        </div>
-
-        @if (res != null)
-        {
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="">@res.FirstName</a>
-                </li>
-                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
-            </ul>
-        }
-        else
-        {
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                </ul>
-
-            </div>
-        }
-    </div>
-</nav>
+@Html.Partial("_HeaderTwoPartial")
 <section class="container">
     <div class="row">
         <aside class="col-md-3">
@@ -93,95 +64,6 @@
 
                 }
             </div>
-            @*
-            <div>
-                <hr />
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.FirstName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.FirstName)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.LastName)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.LastName)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Address)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Email)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Email)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.PhoneNumber)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.PhoneNumber)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Username)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Username)
-                    </dd>
-
-
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.ConfirmPassword)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.ConfirmPassword)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.LGA)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.LGA)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.DateRegistered)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.DateRegistered)
-                    </dd>
-
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Gender)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.Gender)
-                    </dd>
-
-                </dl>
-            </div>
-            *@
         </article>
     </div>
 </section>
