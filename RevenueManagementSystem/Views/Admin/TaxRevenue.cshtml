@@ -8,62 +8,11 @@
 }
 
 
-<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="Home">Ajeromi Ifelodun LGA, Lagos State</a>
-        </div>
-        @if (Session["UserId"] != null)
-        {
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="">@Session["Username"].ToString()</a>
-                </li>
-                <li>@Html.ActionLink("Logout", "Logout", "Admin")</li>
-            </ul>
-        }
-        else
-        {
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                </ul>
-
-            </div>
-        }
-
-
-    </div>
-</nav>
+@Html.Partial("_AdminHeader")
 <section class="container">
     <div class="row">
         <aside class="col-md-3">
-            <div class="quick-links">
-                <h2>Quick Links</h2>
-                <ul>
-                    <li><a href="taxrevenue"><i class="fa fa-th"></i> List of Registered Citizens</a></li>
-                    <!--<li><a href="registration"><i class="fa fa-user"></i> Registration</a></li>-->
-                    <li data-toggle="collapse" data-target="#new" class="collapsed">
-                        <a href="#"><i class="fa fa-user"></i> Registration <span class="arrow"></span></a>
-                    </li>
-                    <ul class="sub-menu collapse" id="new">
-                        <li><a href="birth"> Birth</a></li>
-                        <li><a href="death"> Death</a></li>
-                        <li><a href="marriage"> Marriage</a></li>
-                    </ul>
-                    <li><a href="licenses"><i class="fa fa-book"></i> Upload Licenses Paid</a></li>
-                    <li><a href="registercitizen"><i class="fa fa-user"></i> Register Citizen</a></li>
-                    <li><a href="payment"><i class="fa fa-bank"></i> Payment Option</a></li>
-                    <!--<li><a href="verify"><i class="fa fa-edit"></i> Verify Payment</a></li>-->
-                    <li><a href="registeradmin"><i class="fa fa-user"></i> Create Administrator</a></li>
-                    <li><a href="manageaccount"><i class="fa fa-users"></i> Manage Account</a></li>
-                    <li><a href="report"><i class="fa fa-print"></i> Report</a></li>
-                </ul>
-            </div>
+@Html.Partial("_SidePanel")
 
         </aside>
         <article class="col-md-9">
