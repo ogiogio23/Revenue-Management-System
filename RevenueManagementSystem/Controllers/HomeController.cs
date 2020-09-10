@@ -12,10 +12,10 @@ namespace RevenueManagementSystem.Controllers
         //GET
         public ActionResult Index()
         {
-            if (this.AuthenticateUser())
+            /*if (this.AuthenticateUser())
             {
-                return RedirectToAction("Home");
-            }
+                return RedirectToAction("Index");
+            }*/
             return View();
         }
 
@@ -27,10 +27,11 @@ namespace RevenueManagementSystem.Controllers
             {
                 using (RevenueManagementDbContext db = new RevenueManagementDbContext())
                 {
-                    var usr = db.Citizens.Single(a => a.Username == user.Username && a.Password == user.Password);
+                    var usr = db.Citizens.SingleOrDefault (a => a.Username == user.Username && a.Password == user.Password);
                     if (usr == null)
                     {
-                        ModelState.AddModelError("", "Invalid Login Details!");
+                        ViewBag.Message = "Invalid username or password";
+                        //ModelState.AddModelError("", "Invalid Login Details!");
                         return RedirectToAction("Index");
                     }
 
@@ -53,10 +54,6 @@ namespace RevenueManagementSystem.Controllers
 
         public ActionResult Logout()
         {
-            if (!this.AuthenticateUser())
-            {
-                return RedirectToAction("Index");
-            }
             Session.Clear();
 
             return RedirectToAction("Index");
@@ -463,6 +460,24 @@ namespace RevenueManagementSystem.Controllers
             }
 
             return false;
+        }
+
+        public ActionResult EditProfile()
+        {
+            /*if (!this.AuthenticateUser())
+            {
+                return RedirectToAction("Index");
+            }*/
+            Citizen citizen = Session["user"] as Citizen;
+            if (citizen == null)
+            {
+                return HttpNotFound();
+            }
+            using (RevenueManagementDbContext db = new RevenueManagementDbContext())
+            {
+                var citizenInfo = db.Citizens.SingleOrDefault(row => row.CitizenId == citizen.CitizenId);
+                return View(citizenInfo);
+            }
         }
     }
 }

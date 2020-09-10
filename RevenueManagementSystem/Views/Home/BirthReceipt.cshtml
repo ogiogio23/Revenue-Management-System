@@ -9,36 +9,7 @@
     var res2 = Session["user"] as Citizen;
 }
 
-<nav class="navbar navbar-inverse top-nav-menu" id="top-nav-bar">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Ajeromi Ifelodun LGA, Lagos State</a>
-        </div>
-
-        @if (res != null)
-        {
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="">@res2.FirstName</a>
-                </li>
-                <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
-            </ul>
-        }
-        else
-        {
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="home"><i class="fa fa-home" style="font-size: 20px;"></i></a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a><span class="glyphicon glyphicon-user"></span> </a></li>
-                    <li><a href="index"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                </ul>
-
-            </div>
-        }
-    </div>
-</nav>
+@Html.Partial("_HeaderTwoPartial")
 <section class="container">
     <div class="row">
         <aside class="col-md-3">
@@ -74,11 +45,11 @@
                     <th class="text-center">PAYMENT INVOICE FOR BIRTH REGISTRATION</th>
 
                     <tr><th>Name: </th><td>@res2.FirstName </td></tr>
+                    <tr><th>Name: </th><td>@res2.LastName </td></tr>
                     <tr><th>Phone Number: </th><td>@res2.PhoneNumber</td></tr>
                     <tr><th>Occupation: </th><td>@res2.LGA</td></tr>
                     <tr><th>Bank: </th><td>@res.Occupation</td></tr>
                     <tr><th>Amount Paid: </th><td>@res.AmountPaid</td></tr>
-                    <tr><th>Revenue Type: </th><td>@res.Bank</td></tr>
                     <tr><th>Name Of Baby: </th><td>@res.NameOfBaby</td></tr>
                     <tr><th>Date Of Invoice: </th><td>@res.DOB</td></tr>
                     <tr><th>Date Of Invoice: </th><td>@res.PlaceOfBirth</td></tr>

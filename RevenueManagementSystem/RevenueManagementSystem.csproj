@@ -239,6 +239,7 @@
     <Compile Include="Models\License.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Marriage.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Models\RevenueManagementDbContext.cs" />
     <Compile Include="Models\SqlDefaultValueAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -392,6 +393,11 @@
     <Content Include="Views\Home\BirthInvoice.cshtml" />
     <Content Include="Views\Home\BirthReceipt.cshtml" />
     <Content Include="Views\Home\ListOfPayment.cshtml" />
+    <Content Include="Views\Shared\_HeaderTwoPartial.cshtml" />
+    <Content Include="Views\Home\EditProfile.cshtml" />
+    <Content Include="Views\Shared\_SidePanel.cshtml" />
+    <Content Include="Views\Shared\_AdminHeader.cshtml" />
+    <Content Include="Views\Shared\_HomeSidePanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

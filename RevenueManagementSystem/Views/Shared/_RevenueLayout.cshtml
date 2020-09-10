@@ -111,6 +111,20 @@ WinPrint.print();
 WinPrint.close();
  });
    });
+
+   $(function () {
+       $('#btn-report').click(function (e) {
+           e.preventDefault();
+           var prtContent = document.getElementById("report-table");
+           window.console.log(prtContent.outerHTML);
+           var WinPrint = window.open('', 'RECEIPT', 'left=0,top=0,width=800,height=600,toolbar=0,scrollbars=0,status=0');
+           WinPrint.document.write(prtContent.outerHTML);
+           WinPrint.document.close();
+           WinPrint.focus();
+           WinPrint.print();
+           WinPrint.close();
+       });
+   });
     </script>
 </body>
 </html>

@@ -23,6 +23,11 @@
 
             <form class="form-horizontal center-container" role="form" action="" method="post" id="login-form" enctype="multipart/form-data">
                 <h3><i class="fa fa-user"></i> Sign in Admin</h3>
+                @if (ViewBag.Message != null)
+                {
+                    <p style="color:#ff1a1a">@ViewBag.Message</p>
+                }
+
                 <div class="form-group"></div>
                 <div class="form-group">
                     <label class="fa fa-user form-control-icon" for="input-username"></label>
